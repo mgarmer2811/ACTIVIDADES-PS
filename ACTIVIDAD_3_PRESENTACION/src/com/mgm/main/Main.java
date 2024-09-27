@@ -16,15 +16,13 @@ public class Main {
     public static void main(String[] args) {
         String mayus = "";
         
-        if(args.length >= 1){
-            mayus = args[0].toUpperCase();
-            System.out.println(mayus);
-            System.exit(0);
-        }
-        else if(args.length == 0){
+        if(args.length == 0){
             System.out.println("Se necesita un parametro");
             System.exit(1);
         }
+        mayus = args[0].toUpperCase();
+        System.out.println(mayus);
+        System.exit(0);
     }
     
 }
