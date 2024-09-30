@@ -14,11 +14,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String jarPath = "C:\\Users\\Usuario14\\Desktop\\DEV\\PSPRO\\ACTIVIDAD_3_PRESENTACION\\dist\\ACTIVIDAD_3_PRESENTACION.jar";
-        String[] commands = new String[]{"java","-jar",jarPath,"hola"};
+       
+        String[] commands = {"java","ToUpperCase.java","hola mundo"};
         Runtime runTime = Runtime.getRuntime();
         Process process;
-        int exitCode = 10;
+        int exitCode = 2;
         
         try{
             process = runTime.exec(commands);
