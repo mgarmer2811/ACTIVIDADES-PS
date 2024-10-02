@@ -18,7 +18,7 @@ public class Main {
         String[] commands = {"java","ToUpperCase.java","hola mundo"};
         Runtime runTime = Runtime.getRuntime();
         Process process;
-        int exitCode = 2;
+        int exitCode = 10;
         
         try{
             process = runTime.exec(commands);
