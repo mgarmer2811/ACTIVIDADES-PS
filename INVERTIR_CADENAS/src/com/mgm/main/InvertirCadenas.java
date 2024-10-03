@@ -25,8 +25,7 @@ public class InvertirCadenas {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> texts = new ArrayList<String>();
-        ArrayList<String> reversedTexts = new ArrayList<String>();
+        ArrayList<String> texts = new ArrayList<>();
         String stopFlag = "FIN";
         System.out.println("Introduzca textos para revertir (Escriba FIN para terminar la introduccion de texto)");
         
