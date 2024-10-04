@@ -34,8 +34,8 @@ public class FiltroParImpar {
         else{
             option = args[0];
             boolean finished = false;
-            System.out.println("");
-            System.out.println("Introduzca numeros y pulse enter (introduzca 0 para terminar la introduccion de datos)");
+            //System.out.println("");
+            //System.out.println("Introduzca numeros y pulse enter (introduzca 0 para terminar la introduccion de datos)");
             
             while(!finished){
                 int number = scanner.nextInt();
@@ -71,7 +71,6 @@ public class FiltroParImpar {
                         aux.add(number);
                     }
                 }
-                System.out.println("");
                 System.out.println(aux.toString());
                 break;
             }
@@ -82,7 +81,6 @@ public class FiltroParImpar {
                         aux.add(number);
                     }
                 }
-                System.out.println("");
                 System.out.println(aux.toString());
                 break;
             }

@@ -13,7 +13,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Arrays;
 
 /**
  *
@@ -26,73 +25,73 @@ public class ClasificaNumeros {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean finished = false;
         ArrayList<Integer> numbers = new ArrayList<>();
-        String evenNumbers;
-        String oddNumbers;
-        
-        System.out.println("");
-        System.out.println("Introduzca numeros y pulse enter(introduzca 0 cuando quiera terminar la introduccion de datos)");
+        boolean finished = false;
+        System.out.println("Introduzca numeros y pulse enter (introduzca 0 para terminar la introduccion de datos)");
+
         while (!finished) {
             int number = scanner.nextInt();
             if (number == 0) {
                 finished = true;
-                numbers.add(number);
             } else {
                 numbers.add(number);
             }
         }
+        
         Runtime runtime = Runtime.getRuntime();
         Process process_1;
         Process process_2;
-        String[] command_1 = {"java","FiltroParImpar","p"};
-        String[] command_2 = {"java","FiltroParImpar","i"};
+        String[] command_1 = {"java","FiltroParImpar.java","p"};
+        String[] command_2 = {"java","FiltroParImpar.java","i"};
         
         try{
             process_1 = runtime.exec(command_1);
-            OutputStream out = process_1.getOutputStream();
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out));
-            
-            for(Integer number : numbers){
-                bw.write(number);
-                bw.newLine();
-            }
-            bw.flush();
-            bw.close();
-            
-            InputStream in = process_1.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            evenNumbers = br.readLine();
-            br.close(); // Here i have even numbers in this form: [2,4,6]
-            process_1.waitFor();
-            
             process_2 = runtime.exec(command_2);
+            OutputStream out = process_1.getOutputStream();
             OutputStream out2 = process_2.getOutputStream();
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out));
             BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(out2));
             
             for(Integer number : numbers){
-                bw2.write(number);
+                bw.write(String.valueOf(number));
+                bw2.write(String.valueOf(number));
+                bw.newLine();
                 bw2.newLine();
             }
+            
+            /* Todo este bloque es porque para el proceso anterior necesito pasarle 0
+                para que se termine la introduccion de datos
+            */
+            bw.write(String.valueOf(0));
+            bw.newLine();
+            bw2.write(String.valueOf(0));
+            bw2.newLine();
+           
+            bw.flush();
+            bw.close();
             bw2.flush();
             bw2.close();
             
+            InputStream in = process_1.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            process_1.waitFor();
+            String lineEven = br.readLine();
+            
             InputStream in2 = process_2.getInputStream();
             BufferedReader br2 = new BufferedReader(new InputStreamReader(in2));
-            oddNumbers = br2.readLine();
-            br2.close();
             process_2.waitFor();
+            String lineOdd = br2.readLine();
+            
+            br.close();
+            br2.close();
+            
+            System.out.println("Numeros pares: " + lineEven);
+            System.out.println("Numeros impares: " + lineOdd);
         }
         catch(IOException ioe){
-            System.err.println("Ha ocurrido un error en la comunicacion entre procesos");
+            
         }
         catch(InterruptedException ie){
-            System.err.println("Ha ocurrido un error en la ejecucion de algun proceso");
         }
-        
-        String onlyEvenNumbers = evenNumbers.substring(1, evenNumbers.length() - 1);
-        String onlyOddNumbers = oddNumbers.substring(1, oddNumbers.length() - 1);
-        
     }
-    
 }
