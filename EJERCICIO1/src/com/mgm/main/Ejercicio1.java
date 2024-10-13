@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Usuario
@@ -23,46 +24,58 @@ public class Ejercicio1 {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int stringNumber;
+        int numStrings = 0;
+        int exitCode;
         String fileName;
+        String tempLine;
+        ArrayList<String> strings = new ArrayList<>();
         
-        System.out.println("Introduzca un numero entero entre 10 y 20");
-        stringNumber = scanner.nextInt();
+        System.out.println("Introduzca el numero de cadenas a generar {10-20}");
+        numStrings = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Introduce ahora el nombre del fichero donde escribir las cadenas");
+        System.out.println("Introduce el nombre del fichero donde guardar las cadenas");
         fileName = scanner.nextLine();
         
         Runtime runtime = Runtime.getRuntime();
-        Process process = null;
-        Process process_2 = null;
-        String[] command_1 = {"java","CreaCadenas.java",Integer.toString(1)};
+        String[] command_1 = {"java","CreaCadenas.java",Integer.toString(numStrings)};
         String[] command_2 = {"java","Cadenas.java"};
-        BufferedWriter bw = null;
-        BufferedReader br = null;
-        ArrayList<String> texts = new ArrayList<String>();
+        Process process;
+        BufferedWriter bw;
+        BufferedReader br;
         
         try{
-            for(int i = 0; i < stringNumber; i++){
-                process = runtime.exec(command_1);
-                br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                texts.add(br.readLine());
-            }
-            br.close();
-            texts.add("FIN");
-            process_2 = runtime.exec(command_2);
-            bw = new BufferedWriter(new OutputStreamWriter(process_2.getOutputStream()));
+            process = runtime.exec(command_1);
             
-            for(String text : texts){
-                bw.write(text);
+            br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            while((tempLine = br.readLine()) != null){
+                strings.add(tempLine);
+            }
+            strings.add("fin");
+            br.close();
+            process.waitFor();
+            
+//            for(String string : strings){
+//                System.out.println(string);
+//            }
+            
+            process = runtime.exec(command_2);
+            bw = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+            
+            for(String string : strings){
+                bw.write(string);
                 bw.newLine();
             }
+            
             bw.write(fileName);
             bw.newLine();
             
             bw.flush();
             bw.close();
+            
+            exitCode = process.waitFor();
+            System.out.println("El programa ha terminado con codigo: " + exitCode);
         }
         catch(IOException ioe){}
+        catch(InterruptedException ie){}
     }
-    
 }

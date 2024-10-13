@@ -7,6 +7,7 @@ package com.mgm.main;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,7 @@ public class CreaCadenas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ArrayList<String> strings = new ArrayList<>();
         
         if((args.length < 1) || (args.length > 1)){
             System.out.println("Error en el numero de parametros proporcionados");
@@ -39,9 +41,13 @@ public class CreaCadenas {
                     String randomString = br.readLine();
                     
                     br.close();
-                    System.out.println(randomString);
+                    strings.add(randomString);
                 }
                 catch(IOException ioe){}
+            }
+            
+            for(String randomString : strings){
+                System.out.println(randomString);
             }
         }
     }

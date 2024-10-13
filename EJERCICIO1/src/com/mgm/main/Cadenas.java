@@ -21,37 +21,12 @@ public class Cadenas {
      */
     public static void main(String[] args) {
         ArrayList<String> texts = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
         String fileName;
+        String text;
+        boolean finished = false;
+        Scanner scanner = new Scanner(System.in);
         
         System.out.println("Introduzca cadenas de texto (Introduzca el texto 'FIN' para terminar la introduccion de datos)");
-        getTexts(texts);
-        fileName = scanner.nextLine();
-        
-        Runtime runtime = Runtime.getRuntime();
-        Process process;
-        String[] command = {"java", "Frecuencia.java", fileName};
-        BufferedWriter bw;
-         
-        try{
-            for(String text : texts){
-                process = runtime.exec(command);
-                bw = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-                bw.write(text);
-                bw.newLine();
-                
-                bw.flush();
-                bw.close(); 
-            }
-        }
-        catch(IOException ioe){}
-    }
-    
-    public static void getTexts(ArrayList<String> texts) {
-        Scanner scanner = new Scanner(System.in);
-        boolean finished = false;
-        String text;
-        
         while(!finished){
             text = scanner.nextLine();
             if(!text.equalsIgnoreCase("fin")){
@@ -61,5 +36,25 @@ public class Cadenas {
                 finished = true;
             }
         }
+        System.out.println("Introduzca el nombre del fichero donde se guardara el resultado");
+        fileName = scanner.nextLine();
+        
+        Runtime runtime = Runtime.getRuntime();
+        Process process;
+        String[] command = {"java","Frecuencia.java",fileName};
+        BufferedWriter bw;
+         
+        try{
+            for(String string : texts){
+                process = runtime.exec(command);
+                bw = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+                bw.write(string);
+                bw.newLine();
+                
+                bw.flush();
+                bw.close(); 
+            }
+        }
+        catch(IOException ioe){}
     }
 }
