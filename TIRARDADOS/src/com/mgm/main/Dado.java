@@ -26,11 +26,11 @@ public class Dado {
             catch(NumberFormatException e){
                 System.err.println("Ha ocurrido un error lanzando el dado");
             }
-            result = random.nextInt((numberFaces - MIN_DICE + 1) + MIN_DICE);
+            result = (random.nextInt(numberFaces) + 1);
             System.out.println(result);
         }
         else{
-            result = random.nextInt((MAX_NORMAL_DICE - MIN_DICE + 1) + MIN_DICE);
+            result = (random.nextInt(6) + 1);
             System.out.println(result);
         }
     }
