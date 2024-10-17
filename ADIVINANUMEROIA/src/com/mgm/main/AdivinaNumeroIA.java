@@ -42,12 +42,12 @@ public class AdivinaNumeroIA {
             bw = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
             br = new BufferedReader(new InputStreamReader(process.getInputStream()));
             
-            bw.write(guess);
+            bw.write(Integer.toString(guess));
             bw.newLine();
             bw.flush();
             
             processInfo = br.readLine();
-            System.out.println("Ronda " + rounds + ": " + guess + " " + processInfo);
+            System.out.println("Ronda " + rounds + ": " + guess + processInfo);
             
             while(!processInfo.equals("=")){
                 rounds++;
@@ -59,7 +59,7 @@ public class AdivinaNumeroIA {
                 }
                 
                 guess = (lowerBound + random.nextInt((upperBound - lowerBound) + 1));
-                bw.write(guess);
+                bw.write(Integer.toString(guess));
                 bw.newLine();
                 bw.flush();
 
