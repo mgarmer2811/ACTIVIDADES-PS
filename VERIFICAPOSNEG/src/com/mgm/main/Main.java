@@ -12,6 +12,9 @@ import java.util.Scanner;
  */
 public class Main {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         String numeros;
         Scanner scanner = new Scanner(System.in);
@@ -21,7 +24,8 @@ public class Main {
         String[] nums = numeros.split(" ");
         
         for(String num : nums){
-            new VerificaParidad(Integer.parseInt(num)).start();
+            new VerificaPosNeg(Integer.parseInt(num)).start();
         }
     }
+    
 }

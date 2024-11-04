@@ -8,25 +8,25 @@ package com.mgm.main;
  *
  * @author Usuario14
  */
-public class VerificaParidad extends Thread{
+public class VerificaPosNeg extends Thread{
     private int numero;
     
-    public VerificaParidad(int numero) {
+    public VerificaPosNeg(int numero) {
         super();
         this.numero = numero;
     }
     
-    public void esPar() {
-        if((numero % 2) == 0){
-            System.out.println(numero + " es par");
+    public void esPositivo() {
+        if(numero > 0){
+            System.out.println("El numero " + numero + " es positivo");
         }
         else{
-            System.out.println(numero + " es impar");
+            System.out.println("El numero " + numero + " es negativo");
         }
     }
     
     @Override
     public void run() {
-        this.esPar();
+        this.esPositivo();
     }
 }
