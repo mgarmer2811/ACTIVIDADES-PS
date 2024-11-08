@@ -14,10 +14,11 @@ public class HilosMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Hilo miHilo = new Hilo("Mi hilo", 10);
-        miHilo.start();
+        HiloInfinito hiloInfinito = new HiloInfinito("Demonio");
+        hiloInfinito.start();
         try{
             Thread.sleep(3000);
+            hiloInfinito.setCorriendo(false);
         }
         catch(InterruptedException ie){}
         System.out.println("Han pasado 3 segundos");
