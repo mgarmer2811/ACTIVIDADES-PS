@@ -10,21 +10,26 @@ package com.mgm.main;
  */
 public class HiloSuma extends Thread{
     private int[] numeros;
-    private int[] mitad;
-    private int numMitad;
+    private int suma;
     
-    public HiloSuma(int[] numeros, int numMitad) {
+    public HiloSuma(int[] numeros) {
         super();
         this.numeros = numeros;
-        this.numMitad = numMitad;
+        suma = 0;
     }
     
     public void suma() {
-        switch(numMitad){
-            case 1:
-            case 2:
-            default:
-                System.err.println("Opcion no valida de numero de mitad");
+        for(int num : numeros){
+            suma += num;
         }
+    }
+    
+    public int getSuma() {
+        return suma;
+    }
+    
+    @Override
+    public void run() {
+        suma();
     }
 }
