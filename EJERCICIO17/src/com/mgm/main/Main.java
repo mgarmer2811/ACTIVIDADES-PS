@@ -21,33 +21,31 @@ public class Main {
         int numRatones;
         Random random = new Random();
         Comedero comedero = new Comedero();
-        
+
         Cuidador cuidador = new Cuidador(comedero);
         cuidador.setDaemon(true);
-        
+
         System.out.println("Introduce el numero de ratones");
         numRatones = scanner.nextInt();
         cuidador.start();
         RatonHilo[] ratones = new RatonHilo[numRatones];
-        
-        for(int i = 0; i < numRatones; i++){
+
+        for (int i = 0; i < numRatones; i++) {
             String nombre = "Raton " + (i + 1);
             int tiempo = 1 + random.nextInt(3);
             int unidades = 1 + random.nextInt(4);
-            ratones[i] = new RatonHilo(nombre,tiempo,unidades,comedero);
+            ratones[i] = new RatonHilo(nombre, tiempo, unidades, comedero);
             ratones[i].start();
         }
-        
-        
-        for(RatonHilo raton : ratones){
-            try{
+
+        for (RatonHilo raton : ratones) {
+            try {
                 raton.join();
-            }
-            catch(InterruptedException ie){
+            } catch (InterruptedException ie) {
                 System.err.println("Se ha producido un error esperando que un raton termine de comer");
             }
         }
-        
+
         System.out.println("TODOS HAN TERMINADO DE COMER");
     }
 }

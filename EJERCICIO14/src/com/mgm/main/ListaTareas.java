@@ -11,18 +11,23 @@ import java.util.ArrayList;
  * @author Usuario14
  */
 public class ListaTareas {
-    private static ArrayList<String> tareas;
-    
+    private ArrayList<String> tareas;
+
     public ListaTareas() {
         this.tareas = new ArrayList<>();
     }
-    
-    public static void anadirTarea(String tarea) {
+
+    public synchronized void anadirTarea(String tarea) {
         tareas.add(tarea);
+        notify();
     }
-    
-    public static String obtenerTarea(int posicion) {
-        String tarea = tareas.getFirst();
-        return tarea;
+
+    public synchronized String obtenerTarea() throws InterruptedException {
+        if (tareas.isEmpty()) {
+            Thread.sleep(1);
+            wait();
+
+        }
+        return tareas.removeFirst();
     }
 }

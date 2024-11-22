@@ -8,12 +8,21 @@ package com.mgm.main;
  *
  * @author Usuario14
  */
-public class Planificador {
+public class Planificador extends Thread{
+    private ListaTareas listaTareas;
+    private int nTareas;
+
+    public Planificador(ListaTareas listaTareas, int nTareas) {
+        super();
+        this.listaTareas = listaTareas;
+        this.nTareas = nTareas;
+    }
     
-    public static void crearTareas(int numeroTareas) {
-        for(int i = 1; i <= numeroTareas; i++){
-            String tarea = "Tarea" + i;
-            ListaTareas.anadirTarea(tarea);
+    @Override
+    public void run(){
+        for(int i=0; i < nTareas; i++){
+            String tarea = "Tarea " + i;
+            listaTareas.anadirTarea(tarea);
             System.out.println("P: " + tarea + " añadida");
         }
     }
