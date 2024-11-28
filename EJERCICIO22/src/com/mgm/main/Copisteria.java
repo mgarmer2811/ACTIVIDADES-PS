@@ -12,10 +12,10 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author Usuario14
  */
-public class Impresora {
+public class Copisteria {
     private final Lock lock = new ReentrantLock();
     
-    public Impresora(){}
+    public Copisteria(){}
     
     public void print(String nombreOrdenador, int tiempoImpresion){
         lock.lock();

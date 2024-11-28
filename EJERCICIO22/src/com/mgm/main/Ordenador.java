@@ -11,9 +11,9 @@ package com.mgm.main;
 public class Ordenador extends Thread{
     private String nombre;
     private int tiempo;
-    private Impresora printer;
+    private Copisteria printer;
     
-    public Ordenador(String nombre, int tiempo, Impresora printer) {
+    public Ordenador(String nombre, int tiempo, Copisteria printer) {
         this.nombre = nombre;
         this.tiempo = tiempo;
         this.printer = printer;

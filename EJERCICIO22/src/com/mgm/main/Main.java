@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Ordenador[] ordenadores = new Ordenador[10];
-        Impresora impresora = new Impresora();
+        Copisteria impresora = new Copisteria();
         Random random = new Random();
         
         for(int i = 0; i < 10; i++){
