@@ -4,8 +4,6 @@
  */
 package com.mgm.main;
 
-import java.util.Random;
-
 /**
  *
  * @author Usuario

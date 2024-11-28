@@ -4,33 +4,39 @@
  */
 package com.mgm.main;
 
-import java.util.Random;
-
 /**
  *
  * @author Usuario
  */
-public class Cuidador extends Thread {
-
+public class Cuidador extends Thread{
     private final Comedero comedero;
-
-    public Cuidador(Comedero comedero) {
+    
+    public Cuidador(Comedero comedero){
         super();
         this.comedero = comedero;
     }
-
-    private void rellenarComedero() {
-        while (true) {
-            synchronized (comedero) {
-                if (comedero.getComidaActual() < comedero.getMinimoComida()) {
+    
+    private void rellenarComedero(){
+        while(true){
+            comedero.getLock().lock();
+            try{
+                comedero.getCuidadorEsperando().await();
+                
+                if(comedero.getComidaActual() < comedero.getMinimoComida()){
                     comedero.recargarComida();
                 }
             }
+            catch(InterruptedException ie){
+                System.err.println("Se ha producido un error mientras el cuidador rellena la comida");
+            }
+            finally{
+                comedero.getLock().unlock();
+            }
         }
     }
-
+    
     @Override
-    public void run() {
+    public void run(){
         rellenarComedero();
     }
 }
