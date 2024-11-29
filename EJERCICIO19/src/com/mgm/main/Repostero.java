@@ -25,7 +25,7 @@ public class Repostero extends Thread {
             pasteleria.pedirIngrediente(ingredienteFaltante);
             System.out.println("Repostero: Preparando el bizcocho...");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2000); // Lo que tarda el mister en hacer el bizcocho
             } catch (InterruptedException e) {
                 System.err.println("Error mientras se preparaba el bizcocho");
             }

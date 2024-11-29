@@ -48,11 +48,9 @@ public class Pasteleria {
                     break;
                 }
             }
-            System.out.println("Repostero: Necesito " + ingrediente);
-            condition.signal(); // Notificamos al proveedor correspondiente
-            
             while(!esIngredienteDisponible(ingrediente)){
                 condition.await();
+                condition.signal();
             }
             System.out.println("Repostero: Recibi el ingrediente");
         }
