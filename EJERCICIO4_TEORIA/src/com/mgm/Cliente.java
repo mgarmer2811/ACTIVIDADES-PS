@@ -33,7 +33,9 @@ public class Cliente {
                     if (!enviado.equalsIgnoreCase("s")) {
                         break;
                     }
-                } else {
+                }
+                else if (!recibido.equalsIgnoreCase("¡Muy bien! Has acertado la palabra")){
+                    System.out.println("Introduce una letra o palabra");
                     enviado = scanner.nextLine();
                     bw.write(enviado);
                     bw.newLine();

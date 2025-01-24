@@ -10,7 +10,7 @@ public class Servidor {
     public static void main(String[] args) {
         int puerto = 50050;
 
-        String[] palabras = {"casa", "sol", "luz", "agua", "vida", "paz", "amor", "árbol", "cielo", "flor"};
+        String[] palabras = {"casa", "sol", "luz", "agua", "vida", "paz", "amor", "arbol", "cielo", "flor"};
 
         try (ServerSocket serverSocket = new ServerSocket(puerto)) {
             System.out.println("Servidor iniciado");
@@ -35,7 +35,8 @@ public class Servidor {
 
                 int letrasAcierto = 0;
                 while (letrasAcierto < palabraSecreta.length()) {
-                    bw.write("Palabra: " + String.join(" ", letrasGuiones) + "\nIntroduce una letra o palabra completa: ");
+                    String texto = "Palabra: " + String.join(" ",letrasGuiones);
+                    bw.write(texto);
                     bw.newLine();
                     bw.flush();
 
@@ -60,6 +61,10 @@ public class Servidor {
                         }
                     }
                 }
+                
+                bw.write("Palabra: " + String.join(" ",letrasGuiones));
+                bw.newLine();
+                bw.flush();
 
                 bw.write("¡Muy bien! Has acertado la palabra");
                 bw.newLine();
