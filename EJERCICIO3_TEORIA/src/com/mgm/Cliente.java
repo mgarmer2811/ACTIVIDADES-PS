@@ -32,12 +32,11 @@ public class Cliente {
             do{
                 System.out.println("Introduce la operacion a realizar con el formato {operando operacion operando} o escribe 'salir' para terminar");
                 enviado = scanner.nextLine();
+                bw.write(enviado);
+                bw.newLine();
+                bw.flush();
                 
                 if(!enviado.equalsIgnoreCase("salir")){
-                    bw.write(enviado);
-                    bw.newLine();
-                    bw.flush();
-                    
                     recibido = br.readLine();
                     System.out.println(recibido);
                 }
