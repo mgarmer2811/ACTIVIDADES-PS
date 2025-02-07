@@ -67,104 +67,24 @@ public class ClienteHandler extends Thread{
                             if(fallo){
                                 fallos++;
                                 switch (fallos) {
-                                    case 1: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
-                                    case 2: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|     |\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
-                                    case 3: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
-                                    case 4: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\\\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                    case 4:
                                     case 5: {
-                                        bw.write("FALLO" + fallos);
+                                        bw.write("FALLO " + fallos);
                                         bw.newLine();
                                         bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\\\n"
-                                                + "|    /\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
+                                        bw.write(String.join(" ",palabraCodificada));
                                         bw.newLine();
                                         bw.flush();
                                         break;
                                     }
                                     case 6: {
-                                        bw.write("FALLO" + fallos);
+                                        bw.write("DERROTA " + fallos);
                                         bw.newLine();
                                         bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\\\n"
-                                                + "|    / \\\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
+                                        bw.write(palabraSecreta);
                                         bw.newLine();
                                         bw.flush();
                                         break;
@@ -173,9 +93,13 @@ public class ClienteHandler extends Thread{
                             }
                             else{
                                 if(String.join("", palabraCodificada).equalsIgnoreCase(palabraSecreta)){
+                                    bw.write("COMPLETADO " + fallos);
+                                    bw.newLine();
+                                    bw.flush();
+                                    bw.write(palabraSecreta);
+                                    bw.newLine();
+                                    bw.flush();
                                     acertado = true;
-                                    continue;
-                                    //////////////////////////////////////////////////////////
                                 }
                                 else{
                                     bw.write("ACIERTO " + fallos);
@@ -191,104 +115,24 @@ public class ClienteHandler extends Thread{
                             if(!recibido.equalsIgnoreCase(palabraSecreta)){
                                 fallos++;
                                 switch (fallos) {
-                                    case 1: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
-                                    case 2: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|     |\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
-                                    case 3: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
-                                    case 4: {
-                                        bw.write("FALLO" + fallos);
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\\\n"
-                                                + "|\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
-                                        bw.newLine();
-                                        bw.flush();
-                                        break;
-                                    }
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                    case 4:
                                     case 5: {
-                                        bw.write("FALLO" + fallos);
+                                        bw.write("FALLO " + fallos);
                                         bw.newLine();
                                         bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\\\n"
-                                                + "|    /\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
+                                        bw.write(String.join(" ",palabraCodificada));
                                         bw.newLine();
                                         bw.flush();
                                         break;
                                     }
                                     case 6: {
-                                        bw.write("FALLO" + fallos);
+                                        bw.write("DERROTA " + fallos);
                                         bw.newLine();
                                         bw.flush();
-                                        bw.write("------|\n"
-                                                + "|     O\n"
-                                                + "|    /|\\\n"
-                                                + "|    / \\\n"
-                                                + "|\n"
-                                                + "=======");
-                                        bw.newLine();
-                                        bw.flush();
-                                        bw.write(String.join(" ", palabraCodificada));
+                                        bw.write(palabraSecreta);
                                         bw.newLine();
                                         bw.flush();
                                         break;
@@ -296,33 +140,20 @@ public class ClienteHandler extends Thread{
                                 }
                             }
                             else{
+                                bw.write("COMPLETADO " + fallos);
+                                bw.newLine();
+                                bw.flush();
+                                bw.write(palabraSecreta);
+                                bw.newLine();
+                                bw.flush();
                                 acertado = true;
-                                continue;
                             }
                         }
                     }
                     while((!acertado) && fallos < 6);
-                    
-                    if(acertado){
-                        bw.write("COMPLETADO " + fallos);
-                        bw.newLine();
-                        bw.flush();
-                        bw.write(String.join("",palabraCodificada));
-                        bw.newLine();
-                        bw.flush();
-                    }
-                    else{
-                        bw.write("DERROTA " + fallos);
-                        bw.newLine();
-                        bw.flush();
-                        bw.write(String.join("",palabraCodificada));
-                        bw.newLine();
-                        bw.flush();
-                        recibido = br.readLine();
-                        if(recibido.equalsIgnoreCase("SALIR")){
-                            jugando = false;
-                        }
-                    }
+                }
+                else{
+                    jugando = false;
                 }
             }
             while(jugando);
