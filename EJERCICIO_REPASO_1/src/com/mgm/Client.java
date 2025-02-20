@@ -8,6 +8,6 @@ package com.mgm;
  *
  * @author Usuario14
  */
-public class ClientRestaurante extends Thread{
+public class Client {
     
 }

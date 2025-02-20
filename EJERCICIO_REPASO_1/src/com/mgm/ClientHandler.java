@@ -4,15 +4,10 @@
  */
 package com.mgm;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Usuario14
  */
-public class ServerLogic {
-    private static ArrayList<ClientComensal> comensales;
-    private static ClientRestaurante restaurante;
-    
-    
+public class ClientHandler {
+    Socket 
 }
