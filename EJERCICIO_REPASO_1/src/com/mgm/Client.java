@@ -29,7 +29,7 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
             
             do{
-                enviado = scanner.nextLine();
+                enviado = scanner.nextLine().toUpperCase();
                 writer.write(enviado);
                 writer.newLine();writer.flush();
                 
@@ -37,7 +37,7 @@ public class Client {
                     continue;
                 }
                 
-                if(enviado.equalsIgnoreCase("TODO")){
+                if(enviado.contains("TODO")){
                     recibido = "";
                     for(int i = 0; i < 5; i++){
                         recibido += reader.readLine() + "\n";

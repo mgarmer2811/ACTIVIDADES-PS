@@ -130,6 +130,7 @@ public class ClientHandler extends Thread{
                 }
             }
             while(!recibido.equalsIgnoreCase("SALIR"));
+            socket.close();
             
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
