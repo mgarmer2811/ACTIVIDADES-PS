@@ -7,14 +7,19 @@ package com.mgm;
 import java.net.*;
 
 public class Server {
+    
     public static void main(String[] args) {
         int puerto = 50050;
         
         try(ServerSocket serverSocket = new ServerSocket(puerto)){
             
             System.out.println("Esperando cliente");
-            Socket socketCliente = serverSocket.accept();
-            System.out.println("Cliente conectado");
+            while(true){
+                Socket socketCliente = serverSocket.accept();
+                System.out.println("Cliente conectado");
+                new ClientHandler(socketCliente).start();
+            }
+            
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
         }
